@@ -10,32 +10,30 @@ import android.widget.TextView;
 
 import com.squareup.picasso.Picasso;
 
-import org.w3c.dom.Text;
-
 import java.util.ArrayList;
 
-public class PhotoAdapter extends BaseAdapter {
-    private ArrayList<Photo> photo_list;
+public class ArticleAdapter extends BaseAdapter {
+    private ArrayList<Article> article_list;
     private Context context;
 
-    public PhotoAdapter(ArrayList<Photo> photo_list, Context context) {
-        this.photo_list = photo_list;
+    public ArticleAdapter(ArrayList<Article> photo_list, Context context) {
+        this.article_list = photo_list;
         this.context = context;
     }
 
     @Override
     public int getCount() {
-        return photo_list.size();
+        return article_list.size();
     }
 
     @Override
     public Object getItem(int i) {
-        return photo_list.get(i);
+        return article_list.get(i);
     }
 
     @Override
     public long getItemId(int i) {
-        return photo_list.get(i).getId();
+        return article_list.get(i).getArticle_id();
     }
 
     @Override
@@ -51,8 +49,8 @@ public class PhotoAdapter extends BaseAdapter {
         }else{
             dataitem = (MyView) view.getTag();
         }
-        Picasso.get().load(photo_list.get(i).getSource_photo()).resize(300,400).centerCrop().into(dataitem.iv_photo);
-        dataitem.tv_title.setText(photo_list.get(i).getTitle_photo());
+        Picasso.get().load(article_list.get(i).getArticle_image()).resize(300,400).centerCrop().into(dataitem.iv_photo);
+        dataitem.tv_title.setText(article_list.get(i).getArticle_title());
         return view;
     }
     public class MyView{
